@@ -4,7 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <string.h>
+#include <ctype.h>
+#include <unistd.h>
 
+#define MAX_LEN 1024
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -37,7 +41,17 @@ typedef struct instruction_s
 
 stack_t create_node(int n);
 void pall(stack_t **stack, __attribute__((unused)) unsigned int number);
-void push(stack_t **stack, unsigned in line_number);
-
+void push(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(__attribute__ ((unused)) stack_t **stack, __attribute__ ((unused)) unsigned int line_number);
+int main(int argc, char **argv);
+int _isdigit(int c);
+int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
+void _free(stack_t *stack);
+void process(char *line, stack_t **stack, unsigned int line_number);
 
 #endif

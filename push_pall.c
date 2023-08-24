@@ -6,7 +6,7 @@
  * @line_number: value
  */
 
-void push(stack_t **stack, unsigned in line_number)
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *nw;
 
@@ -34,7 +34,7 @@ void push(stack_t **stack, unsigned in line_number)
  * @stack: pointer to head of stack
  * @line_number: number
  */
-void pall(stack_t **stack, __attribute__((unused)) unsigned int number)
+void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 

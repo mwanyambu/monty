@@ -1,13 +1,13 @@
 #include "monty.h"
 
 /**
- * create_note - ctreates a new node
+ * create_node - ctreates a new node
  * @n: integer
  */
 
-stack_t create_node(int n)
+stack_t *create_node(int n)
 {
-	stack_t nw =  NULL;
+	stack_t *nw =  NULL;
 
 	nw = malloc(sizeof(stack_t));
 
