@@ -22,7 +22,7 @@ void get_op(char *line, char *opcode, stack_t **stack, unsigned int line_number)
 	};
 	int index;
 
-	for (index = 0; instructions[index].opcode != NULL; n++)
+	for (index = 0; instructions[index].opcode != NULL; index++)
 	{
 		if (_strcmp(opcode, instructions[index].opcode) == 0)
 		{
@@ -30,7 +30,8 @@ void get_op(char *line, char *opcode, stack_t **stack, unsigned int line_number)
 			return;
 		}
 	}
-	fprintf (stderr, "L%d: unknown instruction %s\n", line_number opcode);
+	fprintf (stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 	free(line);
-	free(stack);
+	_free(*stack);
 	exit(EXIT_FAILURE);
+}
