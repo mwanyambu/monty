@@ -3,6 +3,7 @@
 /**
  * create_node - ctreates a new node
  * @n: integer
+ * Return: nw
  */
 
 stack_t *create_node(int n)

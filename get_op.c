@@ -2,7 +2,7 @@
 
 /**
  * get_op - gets opcode
- * @line: line
+ * @line_number: line
  * @opcode: stack opcode
  * @stack: pointer to head of stack
  * 2line_number: line number
@@ -11,7 +11,7 @@
 void get_op(char *line, char *opcode, stack_t **stack, unsigned int line_number)
 {
 	instruction_t instructions[] = {
-		{"push", push},
+		{"push", pusher},
 		{"pint", pint},
 		{"pall", pall},
 		{"add", add},

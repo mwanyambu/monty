@@ -41,7 +41,8 @@ typedef struct instruction_s
 
 stack_t *create_node(int n);
 void pall(stack_t **stack, __attribute__((unused)) unsigned int number);
-void push(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number, char *value);
+void pusher(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
@@ -54,5 +55,5 @@ int _strcmp(char *s1, char *s2);
 void _free(stack_t *stack);
 void process(char *line, stack_t **stack, unsigned int line_number);
 void get_op(char *line, char *opcode, stack_t **stack, unsigned int line_number);
-
+int _atoi(char *s);
 #endif

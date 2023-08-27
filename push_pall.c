@@ -1,32 +1,49 @@
 #include "monty.h"
 
 /**
+ * pusher - push helper
+ * @stack: pointer to head of stack
+ * @line_number: line number
+ */
+void pusher(stack_t **stack, unsigned int line_number)
+{
+	char *value;
+
+	value = strtok(NULL, " \t\n\r");
+	if (value == NULL)
+	{
+		fprintf(stderr, "L%d: Usage: push integer\n", line_number);
+		_free(*stack);
+		exit(EXIT_FAILURE);
+	}
+	push(stack, line_number, value);
+}
+
+/**
  * push - adds element to stack
  * @stack: pointer to head of stack
  * @line_number: value
  */
-
-void push(stack_t **stack, unsigned int line_number)
+void push(stack_t **stack, unsigned int line_number, char *value)
 {
-	stack_t *nw;
+	stack_t *nw = NULL;
+	int val;
 
-	nw = create_node(line_number);
+	nw = malloc(sizeof(stack_t));
 
-	if (nw == NULL)
+	if (value == NULL)
 	{
-		fprintf(stderr, "Usage: push integer\n");
+		fprintf(stderr, "L%d: Usage: push integer\n", line_number);
+		_free(*stack);
 		exit(EXIT_FAILURE);
 	}
-	if (nw != NULL)
-	{
-		nw->next = *stack;
-
-		if (*stack != NULL)
-		{
-			(*stack)->prev = nw;
-		}
-		*stack = nw;
-	}
+	val = _atoi(value);
+	nw->n = val;
+	nw->prev = NULL;
+	nw->next = *stack;
+	if (*stack != NULL)
+		(*stack)->prev = nw;
+	*stack = nw;
 }
 
 /**
@@ -36,11 +53,13 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	stack_t *tmp = *stack;
+	stack_t *tmp = NULL;
+
+	tmp = *stack;
 
 	while (tmp != NULL)
 	{
-		printf("%d\n", tmp->n);
+		fprintf(stdout, "%d\n", tmp->n);
 		tmp = tmp->next;
 	}
 	(void)line_number;
